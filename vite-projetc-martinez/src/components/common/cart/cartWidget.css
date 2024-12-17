@@ -1,0 +1,10 @@
+cart-container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  font-size: 2rem;
+  color: #d63384;
+}

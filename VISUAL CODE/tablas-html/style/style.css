@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tabla {
+  border-collapse: collapse;
+  width: 80%;
+  left: 60%;
+  border-radius: 10px;
+  border: 1px solid rgb(19, 81, 214);
+}
+.tabla th,
+.tabla td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 2px solid #dddddd;
+}
+.Tarjeta {
+  border: 1px solid rgb(19, 81, 214);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  justify-content: center;
+  background-color: royalblue;
+}
+.Tarjeta {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 150px;
+  height: 150px;
+}
+.Contendio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: small;
+}

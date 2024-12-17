@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fce4ec; /* Color rosa claro */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Arial, sans-serif";
+}
+
+.navbar-logo h2 {
+  color: #d63384;
+  margin: 0;
+  font-weight: bold;
+}
+
+.navbar-menu {
+  flex: 1;
+  text-align: center;
+}
+
+.navbar-select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #d63384;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #d63384;
+  outline: none;
+  cursor: pointer;
+}
+
+.navbar-cart {
+  display: flex;
+  align-items: center;
+}
