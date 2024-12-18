@@ -1,53 +1,63 @@
-import { useState } from "react";
-import PropTypes from "prop-types"; // Importar PropTypes
+import PropTypes from "prop-types"; // Importa PropTypes
+import { Button, TextField } from "@mui/material";
 import "./Counter.css";
 
-const Counter = ({ initial = 0, min = 0, max = 99, onCountChange }) => {
-  const [count, setCount] = useState(initial);
-
-  const increment = () => {
-    if (count < max) {
-      const newCount = count + 1;
-      setCount(newCount);
-      onCountChange(newCount);
-    }
-  };
-
-  const decrement = () => {
-    if (count > min) {
-      const newCount = count - 1;
-      setCount(newCount);
-      onCountChange(newCount);
+const Counter = ({ quantity, onAdd, onQuantityChange, stock }) => {
+  const handleInputChange = (event) => {
+    const inputValue = parseInt(event.target.value, 10) || 0;
+    if (inputValue <= stock) {
+      onQuantityChange(inputValue);
+    } else {
+      onQuantityChange(stock);
     }
   };
 
   return (
-    <div className="counter">
-      <button
-        className="counter-btn"
-        onClick={decrement}
-        disabled={count === min}
+    <div className="counter-container">
+      <div className="quantity-controls">
+        <Button
+          variant="contained"
+          onClick={() => onQuantityChange(Math.max(1, quantity - 1))}
+          disabled={quantity <= 1}
+          className="counter-button"
+        >
+          -
+        </Button>
+        <TextField
+          type="number"
+          value={quantity}
+          onChange={handleInputChange}
+          inputProps={{ min: 1, max: stock }}
+          className="quantity-input"
+          variant="outlined"
+          size="small"
+        />
+        <Button
+          variant="contained"
+          onClick={() => onQuantityChange(Math.min(stock, quantity + 1))}
+          disabled={quantity >= stock}
+          className="counter-button"
+        >
+          +
+        </Button>
+      </div>
+      <Button
+        variant="contained"
+        onClick={() => onAdd(quantity)}
+        disabled={quantity === 0}
+        className="add-to-cart-button"
       >
-        -
-      </button>
-      <span className="counter-value">{count}</span>
-      <button
-        className="counter-btn"
-        onClick={increment}
-        disabled={count === max}
-      >
-        +
-      </button>
+        Agregar al carrito
+      </Button>
     </div>
   );
 };
 
-// Agregar validaciones para las props
 Counter.propTypes = {
-  initial: PropTypes.number,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  onCountChange: PropTypes.func,
+  quantity: PropTypes.number.isRequired, // Valida que quantity sea un número y sea obligatoria
+  onAdd: PropTypes.func.isRequired, // Valida que onAdd sea una función y sea obligatoria
+  onQuantityChange: PropTypes.func.isRequired, // Valida que onQuantityChange sea una función y sea obligatoria
+  stock: PropTypes.number.isRequired, // Valida que stock sea un número y sea obligatoria
 };
 
 export default Counter;

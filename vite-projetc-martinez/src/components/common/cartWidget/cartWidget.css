@@ -1,0 +1,17 @@
+.cart-widget-container {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  color: #e91e63; /* Rosa para el ícono */
+}
+
+.MuiBadge-badge {
+  background-color: #ffb6c1; /* Rosa pastel para el badge */
+  color: white;
+  border: 1px solid #e91e63; /* Borde rosa */
+  padding: 0 6px; /* Ajuste de padding */
+  font-size: 0.8rem; /* Ajuste de tamaño de fuente */
+  min-width: 20px; /* Ancho mínimo para que se vea bien con números de un dígito */
+}

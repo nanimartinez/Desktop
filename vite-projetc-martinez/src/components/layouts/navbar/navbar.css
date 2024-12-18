@@ -1,36 +1,69 @@
 .navbar {
+  background-color: #faf9f6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #fce4ec; /* Color rosa claro */
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  font-family: "Arial, sans-serif";
 }
 
-.navbar-logo h2 {
-  color: #d63384;
+.navbar-title {
+  color: #333333;
+  font-weight: 600;
   margin: 0;
-  font-weight: bold;
 }
 
-.navbar-menu {
-  flex: 1;
-  text-align: center;
+.navbar-logo {
+  height: 40px;
 }
 
-.navbar-select {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #d63384;
-  border-radius: 20px;
-  background-color: #fff;
-  color: #d63384;
-  outline: none;
-  cursor: pointer;
-}
-
-.navbar-cart {
+.menu-container {
   display: flex;
   align-items: center;
+}
+
+.menu-icon {
+  color: #ffb6c1;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: #333333;
+  margin: 0 15px;
+}
+
+.menu-link:hover {
+  color: #ffb6c1;
+}
+
+.cart-container {
+  display: flex;
+  align-items: center;
+}
+
+.cart-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.carrito-container .MuiBadge-badge {
+  background-color: #ffb6c1;
+  color: white;
+}
+
+/* Estilos para el menú desplegable */
+.MuiMenu-paper {
+  background-color: #faf9f6;
+  border: 1px solid #ffb6c1;
+}
+
+.MuiMenuItem-root {
+  color: #333333;
+}
+
+.MuiMenuItem-root:hover {
+  background-color: #ffb6c120;
 }

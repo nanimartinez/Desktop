@@ -1,0 +1,65 @@
+.item-detail-container {
+  display: flex;
+  flex-direction: column; /* Alinear verticalmente en pantallas más pequeñas */
+  align-items: flex-start; /* Alinear a la izquierda por defecto */
+  padding: 20px;
+  border: 1px solid #eee; /* Borde sutil */
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  margin-bottom: 20px; /* Espacio inferior */
+  background-color: #fff; /* Fondo blanco */
+}
+
+@media (min-width: 768px) {
+  /* Estilos para pantallas medianas y grandes */
+  .item-detail-container {
+    flex-direction: row; /* Alinear horizontalmente */
+    align-items: flex-start; /* Alinear arriba */
+    gap: 2rem; /* Espacio entre elementos */
+  }
+}
+
+.item-detail-container h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #333; /* Color de texto oscuro */
+}
+
+.item-detail-container img {
+  max-width: 300px; /* Ancho máximo de la imagen */
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.item-detail-description {
+  margin-bottom: 15px;
+  color: #555;
+  line-height: 1.6; /* Espaciado entre líneas */
+}
+
+.item-detail-price {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #007bff; /* Color azul para el precio */
+}
+
+/* Estilos para el contenedor del contador (si es necesario) */
+.counter-container {
+  margin-top: 20px;
+}
+
+/* Media query para responsive design */
+@media (max-width: 767px) {
+  .item-detail-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .item-detail-container img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
