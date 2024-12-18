@@ -1,4 +1,6 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useState } from "react";
+
 export const CartContext = createContext();
 import PropTypes from "prop-types";
 export const CartContextProvider = ({ children }) => {
