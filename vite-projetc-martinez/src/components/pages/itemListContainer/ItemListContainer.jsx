@@ -1,50 +1,48 @@
-import ProductCard from "../../common/productCard/ProductCard";
-import "./itemListContainer.css";
-
-const products = [
-  {
-    id: 1,
-    title: "Base Líquida Matte",
-    price: 25.99,
-    quantity: 10,
-    image: "https://via.placeholder.com/200?text=Base+Líquida",
-  },
-  {
-    id: 2,
-    title: "Labial Rojo Intenso",
-    price: 15.49,
-    quantity: 20,
-    image: "https://via.placeholder.com/200?text=Labial+Rojo",
-  },
-  {
-    id: 3,
-    title: "Sombra de Ojos Nude",
-    price: 18.75,
-    quantity: 15,
-    image: "https://via.placeholder.com/200?text=Sombra+Nude",
-  },
-  {
-    id: 4,
-    title: "Rubor Rosa Suave",
-    price: 12.99,
-    quantity: 25,
-    image: "https://via.placeholder.com/200?text=Rubor+Rosa",
-  },
-];
+import { useState, useEffect } from "react";
+import { products } from "../../../productsMock";
+import ItemList from "./ItemList";
+import { useParams } from "react-router-dom";
+import { db } from "../../../firebaseConfig";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
+  const [items, setItems] = useState([]); // undefined.title
+
+  const { categoryName } = useParams(); // {} -- { categoryName }
+
+  useEffect(() => {
+    let productsCollection = collection(db, "products");
+
+    let consulta = productsCollection; // el va saber a quien pedirle los documentos si a todos o a una parte
+
+    if (categoryName) {
+      let productsCollectionFiltered = query(
+        productsCollection,
+        where("category", "==", categoryName)
+      );
+      consulta = productsCollectionFiltered;
+    }
+
+    getDocs(consulta).then((res) => {
+      let array = res.docs.map((elemento) => {
+        return { ...elemento.data(), id: elemento.id };
+      });
+
+      setItems(array);
+    });
+  }, [categoryName]);
+
+  const agregarProductos = () => {
+    products.forEach((producto) => {
+      addDoc(collection(db, "products"), producto);
+    });
+  };
+
   return (
-    <div className="item-list-container">
-      {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          title={product.title}
-          price={product.price}
-          quantity={product.quantity}
-          image={product.image}
-        />
-      ))}
-    </div>
+    <>
+      <ItemList items={items} />
+      {<button onClick={agregarProductos}>Agregar</button>}
+    </>
   );
 };
 
